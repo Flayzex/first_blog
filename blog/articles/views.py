@@ -11,3 +11,12 @@ class ArticlesHomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         c_def = {'title': 'Главная страница'}
         return context | c_def
+
+
+class AboutView(TemplateView):
+    template_name = 'articles/about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = {'title': 'О нас'}
+        return context | c_def
