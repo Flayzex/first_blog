@@ -10,7 +10,7 @@ class ArticlesHomeView(DataMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # c_def = {'title': 'Главная страница', 'menu_id': 0}
-        c_def = self.get_user_context(title="Главная страница", menu_id=0)
+        c_def = self.get_user_context(title="Главная страница")
         return context | c_def
 
 
@@ -19,5 +19,5 @@ class AboutView(DataMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="О нас", menu_id=1)
+        c_def = self.get_user_context(title="О нас")
         return context | c_def
