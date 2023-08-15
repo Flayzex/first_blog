@@ -22,11 +22,19 @@
                     class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                     <img src="{% static 'articles/images/logo.png' %}" alt="Logo">
                 </a>
+                <a href="{% url 'home' %}" class="nav-link my-log">Blog</a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="{% url 'home' %}" class="nav-link px-2 text-secondary">Home</a>
+                    {% comment %} <li><a href="{% url 'home' %}" class="nav-link px-2 my-link">Home</a>
                     </li>
-                    <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">About</a></li>
+                    <li><a href="{% url 'about' %}" class="nav-link px-2 my-link">About</a></li> {% endcomment %}
+                    {% for m in menu %}
+                    {% if m.id == menu_id %}
+                    <li class="nav-link px-2 menu-selected">{{ m.title }}</li>
+                    {% else %}
+                    <li><a href="{% url m.url_name %}" class="nav-link px-2 my-link">{{ m.title }}</a></li>
+                    {% endif %}
+                    {% endfor %}
                 </ul>
 
                 <div class="text-end">
@@ -43,23 +51,8 @@
     </main>
 
 
-    <footer class="footer bg-dark pt-3 pb-3">
-        <div class="container d-flex justify-content-center align-items-center">
-          <div class="row">
-            <div class="col-md-6">
-              <h3 class="text-secondary">О нас</h3>
-              <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime error, delectus sunt non id temporibus saepe odit eaque numquam cum!</p>
-            </div>
-            <div class="col-md-6">
-              <h3 class="text-secondary">Ссылки</h3>
-              <ul class="list-unstyled">
-                <li><a href="{% url 'home' %}" class="nav-link text-white">Главная</a></li>
-                <li><a href="{% url 'about' %}" class="nav-link text-white">О нас</a></li>
-                <li><a href="#" class="nav-link text-white">Контакты</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <footer class="footer bg-dark pt-3 pb-1">
+        <p class="text-secondary text-center">Pet project</p>
       </footer>
 
     <script src="{% static 'articles/js/bootstrap.bundle.min.js' %}"></script>

@@ -1,0 +1,35 @@
+body {
+    background-color: #bbb;
+}
+
+.my-link {
+    color: #bbb;
+    font-size: 20px;
+    transition-property: color;
+    transition-duration: .3s;
+}
+
+.my-link:hover {
+    color: #6c6
+}
+
+.my-log {
+    padding-left: 10px;
+    padding-right: 40px;
+
+    font-size: 20px;
+    color: #5881d8;
+}
+
+.my-log:hover {
+    color: #5881d8
+}
+
+.menu-selected {
+    color: var(--bs-white);
+    font-size: 20px;
+}
+
+.menu-selected:hover {
+    color: var(--bs-white)
+}

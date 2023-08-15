@@ -1,22 +1,23 @@
-from typing import Any, Dict
 from django.views.generic import TemplateView
-from django.shortcuts import render
+
+from .utils import DataMixin
 
 
 # Create your views here.
-class ArticlesHomeView(TemplateView):
+class ArticlesHomeView(DataMixin, TemplateView):
     template_name = 'articles/articleshome.html'
 
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = {'title': 'Главная страница'}
+        # c_def = {'title': 'Главная страница', 'menu_id': 0}
+        c_def = self.get_user_context(title="Главная страница", menu_id=0)
         return context | c_def
 
 
-class AboutView(TemplateView):
+class AboutView(DataMixin, TemplateView):
     template_name = 'articles/about.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = {'title': 'О нас'}
+        c_def = self.get_user_context(title="О нас", menu_id=1)
         return context | c_def
