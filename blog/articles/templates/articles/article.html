@@ -1,0 +1,11 @@
+{% extends 'articles/base.html' %}
+
+{% block content %}
+
+<h1>{{articles}}</h1>
+<h4>{{articles.description}}</h4>
+<p>{{articles.content}}</p>
+<h6>Автор: {{articles.user}}</h6>
+<h6>{{articles.time_create}}</h6>
+
+{% endblock content %}
