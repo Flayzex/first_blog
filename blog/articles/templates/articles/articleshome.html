@@ -2,7 +2,23 @@
 
 {% block content %}
 
-<h1>{{ title }}</h1>
-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam cupiditate optio neque autem aliquid, qui nisi minima, nesciunt delectus nemo similique fuga magnam, voluptate quis? Blanditiis molestias itaque repellat fugiat in numquam possimus maxime suscipit soluta molestiae? Corrupti praesentium ex sit expedita harum quas eum placeat saepe quos corporis velit totam, iure nam soluta tempora repellat numquam eius molestias alias. Quaerat exercitationem porro ducimus blanditiis eaque repellat tenetur cum ipsum accusantium nobis consequatur saepe eligendi in fugiat molestiae soluta consequuntur omnis, vel, ipsam perspiciatis quae eum! Neque doloribus eos natus labore earum quam. Quo quae consequatur vel qui possimus architecto!
+<ul class="list-group">
+    {% for article in articles %}
+    <li class="list-group-item mb-4">
+        <h2 class="h4 mb-1">{{ article }}</h2>
+        <h5 class="text-muted">{{ article.description }}</h5>
+        {% autoescape on %}
+        <p class="mb-0">{{ article.content|linebreaks|truncatewords:50 }}</p>
+        {% endautoescape %}
+        <h6 class="text-muted">ID автора статьи: {{ article.user_id }}</h6>
+        <div class="text-muted">
+            {{ article.time_create }}
+            <div class="text-end"><a href="{{ article.get_absolute_url }}" class="btn bg-secondary text-white">Читать пост</a></div>
+
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
 
 {% endblock content %}
