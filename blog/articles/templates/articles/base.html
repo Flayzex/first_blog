@@ -25,9 +25,6 @@
                 <a href="{% url 'home' %}" class="nav-link my-log">Blog</a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    {% comment %} <li><a href="{% url 'home' %}" class="nav-link px-2 my-link">Home</a>
-                    </li>
-                    <li><a href="{% url 'about' %}" class="nav-link px-2 my-link">About</a></li> {% endcomment %}
                     {% for m in menu %}
                     {% if m.title == title %}
                     <li class="nav-link px-3 menu-selected">{{ m.title }}</li>
@@ -46,8 +43,10 @@
     </header>
 
 
-    <main class="p-5 bg-secondary text-light">
+    <main class="p-4 bg-secondary text-light">
+        <div class="container">
         {% block content %}{% endblock content %}
+        </div>
     </main>
 
 
