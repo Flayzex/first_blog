@@ -16,7 +16,7 @@ class Articles(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return f"/{self.user.username}/{self.slug}/"
+        return f"/{self.slug}/"
 
     class Meta:
         verbose_name = 'Статья'
