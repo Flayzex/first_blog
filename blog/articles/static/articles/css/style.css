@@ -33,3 +33,9 @@ body {
 .menu-selected:hover {
     color: var(--bs-white)
 }
+
+form {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}

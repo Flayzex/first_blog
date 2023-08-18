@@ -35,8 +35,12 @@
                 </ul>
 
                 <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    <button type="button" class="btn btn-warning">Sign-up</button>
+                    {% if request.user.is_authenticated %}
+                    {{ user.username }}
+                    {% else %}
+                    <a href="#" class="btn btn-outline-light me-2">Войти</a>
+                    <a href="{% url 'registration' %}" class="btn btn-warning me-2">Зарегистрироваться</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
