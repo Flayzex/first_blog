@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Articles(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="User's username")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name="User's username")
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
 
     title = models.CharField(max_length=255, verbose_name="Title")
