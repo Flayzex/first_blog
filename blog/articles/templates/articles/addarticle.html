@@ -2,16 +2,15 @@
 
 {% block content %}
 
+<h1 class="mb-4">{{ title }}</h1>
 <form action="{% url 'add_article' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <div class="invalid-feedback">{{ form.non_fields_errors }}</div>
+   {{ form.non_fields_errors }}
 
     {% for f in form %}
-        <div class="input-group mb-3">
-        {{ f }}
-        <div class="invalid-feedback">{{ f.errors }}</div>
-    </div>
+        <div class="input-group">{{ f }}</div>
+        <div class="mb-3">{{ f.errors }}</div>
     {% endfor %}
 
     <button type="submit" class="btn btn-success">Добавить</button>
