@@ -30,7 +30,8 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
 
-    'articles.apps.ArticlesConfig'
+    'articles.apps.ArticlesConfig',
+    'authenticate.apps.AuthenticateConfig',
 ]
 
 MIDDLEWARE = [

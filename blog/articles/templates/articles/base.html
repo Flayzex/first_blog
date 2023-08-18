@@ -36,9 +36,10 @@
 
                 <div class="text-end">
                     {% if request.user.is_authenticated %}
-                    {{ user.username }}
+                    <span class="me-2">{{ user.username }}</span>
+                    <a href="{% url 'logout' %}" class="btn btn-warning">Выйти</a>
                     {% else %}
-                    <a href="#" class="btn btn-outline-light me-2">Войти</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Войти</a>
                     <a href="{% url 'registration' %}" class="btn btn-warning me-2">Зарегистрироваться</a>
                     {% endif %}
                 </div>

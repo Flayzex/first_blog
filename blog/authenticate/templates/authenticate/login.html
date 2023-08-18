@@ -1,0 +1,21 @@
+{% extends 'articles/base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <h1>{{ title }}</h1>
+
+    {{ form.non_fields_errors }}
+
+    {% for f in form %}
+        <div class="input-group">{{ f }}</div>
+        <div class="mb-3">{{ f.errors }}</div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-success">Войти</button>
+</form>
+
+
+{% endblock content %}
