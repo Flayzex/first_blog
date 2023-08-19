@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<a href="{% url 'home' %}" class="btn text-secondary bg-white">Назад</a>
 <h1>{{articles}}</h1>
 <h4>{{articles.description}}</h4>
 <p>{{articles.content}}</p>
