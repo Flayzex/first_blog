@@ -10,11 +10,10 @@
         {% autoescape on %}
         <p class="mb-0">{{ article.content|linebreaks|truncatewords:50 }}</p>
         {% endautoescape %}
-        <h6 class="text-muted">ID автора статьи: {{ article.user_id }}</h6>
+        <h6 class="text-muted">Автор: {{ article.user }}</h6>
         <div class="text-muted">
             {{ article.time_create }}
             <div class="text-end"><a href="{{ article.get_absolute_url }}" class="btn bg-secondary text-white">Читать пост</a></div>
-
         </div>
     </li>
     {% endfor %}

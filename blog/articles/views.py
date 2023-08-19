@@ -18,14 +18,8 @@ class ArticlesHomeView(DataMixin, ListView):
         c_def = self.get_user_context(title="Главная страница")
         return context | c_def
 
-
-class AboutView(DataMixin, TemplateView):
-    template_name = 'articles/about.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="О нас")
-        return context | c_def
+    def get_queryset(self):
+        return super().get_queryset().select_related('user')
 
 
 class ArticleDetailView(DataMixin, DetailView):
@@ -38,6 +32,9 @@ class ArticleDetailView(DataMixin, DetailView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title=context['articles'])
         return context | c_def
+
+    def get_queryset(self):
+        return super().get_queryset().select_related('user')
 
 
 class AddArticleView(DataMixin, LoginRequiredMixin, CreateView):
@@ -53,3 +50,12 @@ class AddArticleView(DataMixin, LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class AboutView(DataMixin, TemplateView):
+    template_name = 'articles/about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="О нас")
+        return context | c_def
