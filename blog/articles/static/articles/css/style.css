@@ -39,3 +39,16 @@ form {
     margin-left: auto;
     margin-right: auto;
 }
+
+ul.pagination a.page-link {
+    color: var(--bs-secondary)
+}
+
+ul.pagination a.page-link:hover {
+    background-color: var(--bs-transparent);
+    color: var(--bs-white);
+}
+
+.my-pagination {
+    --bs-pagination-focus-box-shadow: none;
+}
