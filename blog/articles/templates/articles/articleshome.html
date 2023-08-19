@@ -8,7 +8,7 @@
         <h2 class="h4 mb-1">{{ article }}</h2>
         <h5 class="text-muted">{{ article.description }}</h5>
         {% autoescape on %}
-        <p class="mb-0">{{ article.content|linebreaks|truncatewords:50 }}</p>
+        <p class="mb-0">{{ article.content|linebreaks|truncatewords:30 }}</p>
         {% endautoescape %}
         <h6 class="text-muted">Автор: {{ article.user }}</h6>
         <div class="text-muted">
