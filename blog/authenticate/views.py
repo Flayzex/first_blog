@@ -9,7 +9,7 @@ from articles.utils import *
 
 
 class RegisterUserView(DataMixin, CreateView):
-    form_class = RegisterUserForm
+    form_class = CustomUserCreationForm
     template_name = 'authenticate/register.html'
     success_url = reverse_lazy('home')
 
@@ -22,6 +22,7 @@ class RegisterUserView(DataMixin, CreateView):
         user = form.save()
         login(self.request, user)
         return redirect('home')
+
 
 class LoginUserView(DataMixin, LoginView):
     form_class = LoginUserForm
