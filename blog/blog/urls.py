@@ -6,7 +6,7 @@ from .settings import DEBUG
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('articles.urls')),
-    path('authenticate/', include('authenticate.urls')),
+    path('profile/', include('authenticate.urls')),
 ]
 
 if DEBUG:

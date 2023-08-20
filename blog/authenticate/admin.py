@@ -6,7 +6,7 @@ from .forms import CustomUserCreationForm
 
 
 class CustomUserAdmin(UserAdmin):
-    list_display = ('id', 'username', 'email', 'last_login', 'date_joined')
+    list_display = ('id', 'username', 'slug', 'email', 'last_login', 'date_joined')
     list_display_links = ('id', 'username')
     search_fields = ('id', 'username')
     list_filter = ('date_joined',)

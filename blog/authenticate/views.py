@@ -1,6 +1,6 @@
 from django.contrib.auth import login,logout
 from django.shortcuts import redirect
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 
@@ -40,3 +40,15 @@ class LoginUserView(DataMixin, LoginView):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+
+class ProfileDetailView(DataMixin, DetailView):
+    model = CustomUser
+    template_name = 'authenticate/profile.html'
+    slug_url_kwarg = 'user_slug'
+    context_object_name = 'user'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title=context['user'])
+        return context | c_def
