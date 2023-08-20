@@ -6,8 +6,13 @@ from .forms import CustomUserCreationForm
 
 
 class CustomUserAdmin(UserAdmin):
-    add_form = CustomUserCreationForm
-    model = CustomUser
-    list_display = ['username', 'email', 'is_staff', 'is_active']
+    list_display = ('id', 'username', 'email', 'last_login', 'date_joined')
+    list_display_links = ('id', 'username')
+    search_fields = ('id', 'username')
+    list_filter = ('date_joined',)
+    readonly_fields = ('last_login', 'date_joined')
 
 admin.site.register(CustomUser, CustomUserAdmin)
+
+
+admin.site.site_title = 'Админ-панель пользователей'
