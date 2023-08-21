@@ -3,7 +3,22 @@
 {% block content %}
 
 <h1>{{ user }}</h1>
-<h6>Дата регистрации: {{user.date_joined}}</h6>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus impedit magnam nihil repudiandae ullam nemo dolores non deleniti, necessitatibus quibusdam voluptatum laudantium, minima rerum, quisquam quod ipsa? Quidem, vero? Tempore doloribus iste atque voluptatibus ab ullam, accusantium sit illo magni commodi rem ipsum recusandae eius libero saepe veritatis iure quibusdam ea porro minima iusto dolor excepturi! Dolorem rem fugit a, enim nisi magni impedit id nemo excepturi? Voluptate quos iste totam temporibus nisi, tempore odit velit officiis voluptas reprehenderit asperiores eaque omnis similique rerum itaque facilis ea dignissimos consequatur, soluta quae magnam sequi ipsa. Impedit laborum recusandae magnam dolore dolores.
+<h5 class="mb-4">Статьи:</h5>
+<ul class="list-group">
+    {% for article in articles %}
+    <li class="list-group-item mb-4">
+        <h2 class="h4 mb-1">{{ article }}</h2>
+        <h5 class="text-muted">{{ article.description }}</h5>
+        {% autoescape on %}
+        <p class="mb-0">{{ article.content|linebreaks|truncatewords:30 }}</p>
+        {% endautoescape %}
+        <a href="{{ article.user.get_absolute_url }}" class="text-muted">Автор: {{ article.user }}</a>
+        <div class="text-muted">
+            {{ article.time_create }}
+            <div class="text-end"><a href="{{ article.get_absolute_url }}" class="btn bg-secondary text-white">Читать пост</a></div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock content %}

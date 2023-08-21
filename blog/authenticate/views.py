@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 
 from .forms import *
 from articles.utils import *
+from articles.models import *
 
 
 class RegisterUserView(DataMixin, CreateView):
@@ -50,5 +51,8 @@ class ProfileDetailView(DataMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title=context['user'])
+        c_def = self.get_user_context(
+            title=context['user'],
+            articles=Articles.objects.filter(user=context['user']).select_related('user')
+            )
         return context | c_def
