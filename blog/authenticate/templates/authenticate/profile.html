@@ -2,23 +2,30 @@
 
 {% block content %}
 
-<h1>{{ user }}</h1>
-<h5 class="mb-4">Статьи:</h5>
-<ul class="list-group">
-    {% for article in articles %}
-    <li class="list-group-item mb-4">
-        <h2 class="h4 mb-1">{{ article }}</h2>
-        <h5 class="text-muted">{{ article.description }}</h5>
-        {% autoescape on %}
-        <p class="mb-0">{{ article.content|linebreaks|truncatewords:30 }}</p>
-        {% endautoescape %}
-        <a href="{{ article.user.get_absolute_url }}" class="text-muted">Автор: {{ article.user }}</a>
-        <div class="text-muted">
-            {{ article.time_create }}
-            <div class="text-end"><a href="{{ article.get_absolute_url }}" class="btn bg-secondary text-white">Читать пост</a></div>
+<div class="row">
+    <div class="col-md-6 offset-md-3 mt-5">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Имя пользователя: {{ user }}</h3>
+          <p class="card-text">Дата регистрации: {{ user.date_joined }}</p>
+          <h5 class="card-subtitle mb-2 text-muted">Список статей</h5>
+          <ul class="list-group">
+            {% for article in articles %}
+            <li class="list-group-item mb-4 bg-secondary">
+                <h2 class="h4 mb-1 text-white">{{ article }}</h2>
+                <h5 class="text-white">{{ article.description }}</h5>
+                <p class="mb-0 text-white">{{ article.content|truncatewords:30 }}</p>
+                <a href="{{ article.user.get_absolute_url }}" class="text-white">Автор: {{ article.user }}</a>
+                <div class="text-white">
+                    {{ article.time_create }}
+                    <div class="text-end"><a href="{{ article.get_absolute_url }}" class="btn bg-white text-secondary">Читать пост</a></div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
         </div>
-    </li>
-    {% endfor %}
-</ul>
+      </div>
+    </div>
+</div>
 
 {% endblock content %}
