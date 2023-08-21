@@ -9,10 +9,6 @@ class CustomUserCreationForm(UserCreationForm):
         'class': 'form-control',
         'placeholder': 'Логин'
         }))
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={
-        'class': 'form-control',
-        'placeholder': 'Электронная почта'
-        }))
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'placeholder': 'Пароль'
