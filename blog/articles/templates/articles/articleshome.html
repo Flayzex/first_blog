@@ -10,7 +10,7 @@
         {% autoescape on %}
         <p class="mb-0">{{ article.content|linebreaks|truncatewords:30 }}</p>
         {% endautoescape %}
-        <a href="{{ article.user.get_absolute_url }}" class="text-muted">Автор: {{ article.user }}</a>
+        <div class="text-muted">Автор: <a href="{{ article.user.get_absolute_url }}" class="link-secondary">{{ article.user }}</a></div>
         <div class="text-muted">
             {{ article.time_create }}
             <div class="text-end"><a href="{{ article.get_absolute_url }}" class="btn bg-secondary text-white">Читать пост</a></div>
