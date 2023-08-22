@@ -9,5 +9,9 @@
 <p>{{articles.content}}</p>
 <a href="{{ articles.user.get_absolute_url }}" class="text-white">Автор: {{articles.user}}</a>
 <h6>{{articles.time_create}}</h6>
+{% if articles.user == request.user %}
+<a href="{% url 'article-update' articles.slug %}" class="btn btn-primary">Редактировать статью</a>
+<a href="{% url 'article-delete' articles.slug %}" class="btn btn-danger">Удалить статью</a>
+{% endif %}
 
 {% endblock content %}

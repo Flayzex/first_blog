@@ -13,7 +13,9 @@
         <div class="mb-3">{{ f.errors }}</div>
     {% endfor %}
 
+    {% block button-form %}
     <button type="submit" class="btn btn-success">Добавить</button>
+    {% endblock button-form %}
 
 </form>
 

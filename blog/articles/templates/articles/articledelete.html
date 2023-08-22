@@ -1,0 +1,11 @@
+{% extends 'articles/base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <a href="javascript:history.back()" class="btn text-secondary bg-white">Назад</a>
+    <button type="submit" class="btn btn-danger">Подтвердить удаление</button>
+</form>
+
+{% endblock content %}
