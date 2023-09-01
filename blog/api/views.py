@@ -1,21 +1,23 @@
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 
+from .permissions import IsOwnerOrReadOnly
 from .serializers import ArticlesSerializer
 from articles.models import Articles
 
 
-class ArticlesAPIList(generics.ListCreateAPIView):
+class ArticlesAPIMixin:
     queryset = Articles.objects.all()
     serializer_class = ArticlesSerializer
+
+
+class ArticlesAPIList(ArticlesAPIMixin, generics.ListCreateAPIView):
     pagination_class = PageNumberPagination
 
 
-class ArticlesAPIUpdate(generics.RetrieveUpdateAPIView):
-    queryset = Articles.objects.all()
-    serializer_class = ArticlesSerializer
+class ArticlesAPIUpdate(ArticlesAPIMixin, generics.RetrieveUpdateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
 
 
-class ArticlesAPIDestroy(generics.RetrieveDestroyAPIView):
-    queryset = Articles.objects.all()
-    serializer_class = ArticlesSerializer
+class ArticlesAPIDestroy(ArticlesAPIMixin, generics.RetrieveDestroyAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
