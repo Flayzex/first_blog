@@ -11,7 +11,13 @@ class ArticlesAPIList(generics.ListCreateAPIView):
     pagination_class = PageNumberPagination
 
 
-class ArticelsAPIUpdate(generics.RetrieveUpdateAPIView):
+class ArticlesAPIUpdate(generics.RetrieveUpdateAPIView):
+    queryset = Articles.objects.all()
+    serializer_class = ArticlesSerializer
+    pagination_class = PageNumberPagination
+
+
+class ArticlesAPIDestroy(generics.RetrieveDestroyAPIView):
     queryset = Articles.objects.all()
     serializer_class = ArticlesSerializer
     pagination_class = PageNumberPagination
