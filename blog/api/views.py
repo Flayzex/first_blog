@@ -9,3 +9,9 @@ class ArticlesAPIList(generics.ListCreateAPIView):
     queryset = Articles.objects.all()
     serializer_class = ArticlesSerializer
     pagination_class = PageNumberPagination
+
+
+class ArticelsAPIUpdate(generics.RetrieveUpdateAPIView):
+    queryset = Articles.objects.all()
+    serializer_class = ArticlesSerializer
+    pagination_class = PageNumberPagination
