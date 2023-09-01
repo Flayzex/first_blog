@@ -1,5 +1,12 @@
 {% extends 'articles/addarticle.html' %}
 
+{% block form-tag %}
+
+<form action="{% url 'article-update' articles.slug %}" method="post" enctype="multipart/form-data">
+
+{% endblock form-tag %}
+
+
 {% block button-form %}
 
 <button type="submit" class="btn btn-primary">Сохранить</button>

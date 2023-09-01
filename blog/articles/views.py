@@ -64,6 +64,7 @@ class ArticleUpdateView(DataMixin, UpdateView):
         c_def = self.get_user_context(title="Редактировать статью")
         return context | c_def
 
+
 class ArticleDeleteView(DataMixin, DeleteView):
     model = Articles
     success_url = reverse_lazy('home')
@@ -79,7 +80,6 @@ class ArticleDeleteView(DataMixin, DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponseRedirect(self.get_success_url())
-
 
 
 class AboutView(DataMixin, TemplateView):
