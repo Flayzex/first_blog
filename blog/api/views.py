@@ -23,12 +23,3 @@ class ArticlesAPIUpdate(ArticlesAPIMixin, generics.RetrieveUpdateAPIView):
 
 class ArticlesAPIDestroy(ArticlesAPIMixin, generics.RetrieveDestroyAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
-
-
-class DocsAPIView(DataMixin, TemplateView):
-    template_name = 'api/docs.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Документация API")
-        return context | c_def

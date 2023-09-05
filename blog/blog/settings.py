@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'rest_framework',
+    'drf_yasg',
 
     'articles.apps.ArticlesConfig',
     'authenticate.apps.AuthenticateConfig',
