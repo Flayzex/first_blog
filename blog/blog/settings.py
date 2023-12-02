@@ -15,7 +15,7 @@ SECRET_KEY = 'djang-p&unarofssb=^=5d+we^%ksk!2ji41+xa2f*j5(!jj511#!=u*)5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
 
 
 # Application definition
@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blog_db',
-        'USER': 'first_blog',
-        'PASSWORD': 'asvasfoapsop123',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'pgdb',
+        'PORT': '5432',
     }
 }
 
